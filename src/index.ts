@@ -6,6 +6,8 @@ import { removeUsers } from "./modules/removeUsers";
 import { changePermisson } from "./modules/changePermission";
 import { editUsers } from "./modules/editUsers";
 import { filterUser } from "./modules/filterUser";
+import { sortUser } from "./modules/sortUser";
+import { searchUsers } from "./modules/searchUsers";
 
 declare global {
     interface Window {
@@ -24,3 +26,5 @@ removeUsers()
 changePermisson()
 editUsers()
 filterUser()
+sortUser()
+searchUsers()

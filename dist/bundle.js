@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst render_1 = __webpack_require__(/*! ./modules/render */ \"./src/modules/render.ts\");\nconst userService_1 = __webpack_require__(/*! ./modules/userService */ \"./src/modules/userService.ts\");\nconst addUser_1 = __webpack_require__(/*! ./modules/addUser */ \"./src/modules/addUser.ts\");\nconst removeUsers_1 = __webpack_require__(/*! ./modules/removeUsers */ \"./src/modules/removeUsers.ts\");\nconst changePermission_1 = __webpack_require__(/*! ./modules/changePermission */ \"./src/modules/changePermission.ts\");\nconst editUsers_1 = __webpack_require__(/*! ./modules/editUsers */ \"./src/modules/editUsers.ts\");\nconst filterUser_1 = __webpack_require__(/*! ./modules/filterUser */ \"./src/modules/filterUser.ts\");\nwindow.userService = new userService_1.UserService;\nwindow.userService.getUsers().then((data) => {\n    (0, render_1.renderUser)(data);\n});\n(0, addUser_1.addUser)();\n(0, removeUsers_1.removeUsers)();\n(0, changePermission_1.changePermisson)();\n(0, editUsers_1.editUsers)();\n(0, filterUser_1.filterUser)();\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst render_1 = __webpack_require__(/*! ./modules/render */ \"./src/modules/render.ts\");\nconst userService_1 = __webpack_require__(/*! ./modules/userService */ \"./src/modules/userService.ts\");\nconst addUser_1 = __webpack_require__(/*! ./modules/addUser */ \"./src/modules/addUser.ts\");\nconst removeUsers_1 = __webpack_require__(/*! ./modules/removeUsers */ \"./src/modules/removeUsers.ts\");\nconst changePermission_1 = __webpack_require__(/*! ./modules/changePermission */ \"./src/modules/changePermission.ts\");\nconst editUsers_1 = __webpack_require__(/*! ./modules/editUsers */ \"./src/modules/editUsers.ts\");\nconst filterUser_1 = __webpack_require__(/*! ./modules/filterUser */ \"./src/modules/filterUser.ts\");\nconst sortUser_1 = __webpack_require__(/*! ./modules/sortUser */ \"./src/modules/sortUser.ts\");\nconst searchUsers_1 = __webpack_require__(/*! ./modules/searchUsers */ \"./src/modules/searchUsers.ts\");\nwindow.userService = new userService_1.UserService;\nwindow.userService.getUsers().then((data) => {\n    (0, render_1.renderUser)(data);\n});\n(0, addUser_1.addUser)();\n(0, removeUsers_1.removeUsers)();\n(0, changePermission_1.changePermisson)();\n(0, editUsers_1.editUsers)();\n(0, filterUser_1.filterUser)();\n(0, sortUser_1.sortUser)();\n(0, searchUsers_1.searchUsers)();\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/index.ts?");
 
 /***/ }),
 
@@ -54,9 +54,19 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*!***********************************!*\
   !*** ./src/modules/filterUser.ts ***!
   \***********************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.filterUser = void 0;\nconst render_1 = __webpack_require__(/*! ./render */ \"./src/modules/render.ts\");\nconst filterUser = () => {\n    const btnIsChildren = document.querySelector('#btn-isChildren');\n    const btnIsPermisson = document.querySelector('#btn-isPermissions');\n    const btnIsAll = document.querySelector('#btn-isAll');\n    btnIsChildren === null || btnIsChildren === void 0 ? void 0 : btnIsChildren.addEventListener('click', () => {\n        window.userService.filterUser('children').then((data) => {\n            (0, render_1.renderUser)(data);\n        });\n    });\n    btnIsPermisson === null || btnIsPermisson === void 0 ? void 0 : btnIsPermisson.addEventListener('click', (e) => {\n        window.userService.filterUser('permission').then((data) => {\n            (0, render_1.renderUser)(data);\n        });\n    });\n    btnIsAll === null || btnIsAll === void 0 ? void 0 : btnIsAll.addEventListener('click', (e) => {\n        window.userService.getUsers().then((data) => {\n            (0, render_1.renderUser)(data);\n        });\n    });\n};\nexports.filterUser = filterUser;\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/modules/filterUser.ts?");
+
+/***/ }),
+
+/***/ "./src/modules/hellpers.ts":
+/*!*********************************!*\
+  !*** ./src/modules/hellpers.ts ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.filterUser = void 0;\nconst filterUser = () => {\n    const btnIsChildren = document.querySelector('#btn-isChildren');\n    const btnIsPermisson = document.querySelector('#btn-isPermissions');\n    const btnIsAll = document.querySelector('#btn-isAll');\n};\nexports.filterUser = filterUser;\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/modules/filterUser.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.debounce = void 0;\nconst debounce = (func, ms) => {\n    let timeOut;\n    return function () {\n        clearTimeout(timeOut);\n        timeOut = setTimeout(func, ms);\n    };\n};\nexports.debounce = debounce;\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/modules/hellpers.ts?");
 
 /***/ }),
 
@@ -80,13 +90,33 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 
 /***/ }),
 
+/***/ "./src/modules/searchUsers.ts":
+/*!************************************!*\
+  !*** ./src/modules/searchUsers.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.searchUsers = void 0;\nconst hellpers_1 = __webpack_require__(/*! ./hellpers */ \"./src/modules/hellpers.ts\");\nconst render_1 = __webpack_require__(/*! ./render */ \"./src/modules/render.ts\");\nconst searchUsers = () => {\n    const searchInput = document.querySelector('#search-input');\n    const searcRender = () => {\n        window.userService.searchUser(searchInput.value).then((users) => {\n            (0, render_1.renderUser)(users);\n        });\n    };\n    searchInput === null || searchInput === void 0 ? void 0 : searchInput.addEventListener('input', (0, hellpers_1.debounce)(searcRender, 1000));\n};\nexports.searchUsers = searchUsers;\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/modules/searchUsers.ts?");
+
+/***/ }),
+
+/***/ "./src/modules/sortUser.ts":
+/*!*********************************!*\
+  !*** ./src/modules/sortUser.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.sortUser = void 0;\nconst render_1 = __webpack_require__(/*! ./render */ \"./src/modules/render.ts\");\nconst sortUser = () => {\n    const headerSortChildren = document.querySelector('#sort-is-children');\n    let isSort = false;\n    headerSortChildren.style.cursor = 'pointer';\n    headerSortChildren === null || headerSortChildren === void 0 ? void 0 : headerSortChildren.addEventListener('click', () => {\n        window.userService.sortUsers({ name: \"children\", value: isSort ? 'asc' : 'desc' }).then((users) => {\n            (0, render_1.renderUser)(users);\n        });\n        isSort = !isSort;\n    });\n};\nexports.sortUser = sortUser;\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/modules/sortUser.ts?");
+
+/***/ }),
+
 /***/ "./src/modules/userService.ts":
 /*!************************************!*\
   !*** ./src/modules/userService.ts ***!
   \************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.UserService = void 0;\nclass UserService {\n    getUsers() {\n        return fetch('http://localhost:1808/users').then(res => res.json());\n    }\n    addUser(user) {\n        return fetch('http://localhost:1808/users', {\n            method: \"POST\",\n            headers: {\n                'Content-type': 'application/json'\n            },\n            body: JSON.stringify(user)\n        }).then(res => res.json());\n    }\n    removeUser(id) {\n        return fetch(`http://localhost:1808/users/${id}`, {\n            method: 'DELETE'\n        }).then(res => res.json());\n    }\n    changUser(id, data) {\n        return fetch(`http://localhost:1808/users/${id}`, {\n            method: 'PATCH',\n            headers: {\n                'Content-type': 'application/json'\n            },\n            body: JSON.stringify(data)\n        }).then(res => res.json());\n    }\n    getUser(id) {\n        return fetch(`http://localhost:1808/users/${id}`).then(res => res.json());\n    }\n    editUser(id, user) {\n        return fetch(`http://localhost:1808/users/${id}`, {\n            method: 'PUT',\n            headers: {\n                'Content-type': 'application/json'\n            },\n            body: JSON.stringify(user)\n        }).then(res => res.json());\n    }\n}\nexports.UserService = UserService;\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/modules/userService.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.UserService = void 0;\nclass UserService {\n    getUsers() {\n        return fetch('http://localhost:1808/users').then(res => res.json());\n    }\n    addUser(user) {\n        return fetch('http://localhost:1808/users', {\n            method: \"POST\",\n            headers: {\n                'Content-type': 'application/json'\n            },\n            body: JSON.stringify(user)\n        }).then(res => res.json());\n    }\n    removeUser(id) {\n        return fetch(`http://localhost:1808/users/${id}`, {\n            method: 'DELETE'\n        }).then(res => res.json());\n    }\n    changUser(id, data) {\n        return fetch(`http://localhost:1808/users/${id}`, {\n            method: 'PATCH',\n            headers: {\n                'Content-type': 'application/json'\n            },\n            body: JSON.stringify(data)\n        }).then(res => res.json());\n    }\n    getUser(id) {\n        return fetch(`http://localhost:1808/users/${id}`).then(res => res.json());\n    }\n    editUser(id, user) {\n        return fetch(`http://localhost:1808/users/${id}`, {\n            method: 'PUT',\n            headers: {\n                'Content-type': 'application/json'\n            },\n            body: JSON.stringify(user)\n        }).then(res => res.json());\n    }\n    filterUser(option) {\n        return fetch(`http://localhost:1808/users?${option}=true`).then(res => res.json());\n    }\n    sortUsers(sortOption) {\n        return fetch(`http://localhost:1808/users?_sort=${sortOption.name}&_order=${sortOption.value}`).then(res => res.json());\n    }\n    searchUser(srt) {\n        return fetch(`http://localhost:1808/users?name_like=${srt}`).then(res => res.json());\n    }\n}\nexports.UserService = UserService;\n\n\n//# sourceURL=webpack://json-sever__lesson/./src/modules/userService.ts?");
 
 /***/ })
 

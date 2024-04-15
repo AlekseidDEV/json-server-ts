@@ -14,7 +14,14 @@ interface UseClass {
     changUser(id: string, data: PermissionChange): Promise<User>
     getUser(id: string): Promise<User>
     editUser(id: string, user: User): Promise<User>
-    // filterUser(option: string): Promise<User[]>
+    filterUser(option: string): Promise<User[]>
+    sortUsers(sortOption: SortParam): Promise<User[]>
+    searchUser(str: string): Promise<User[]>
+}
+
+interface SortParam {
+    name: string
+    value: string
 }
 
 interface PermissionChange {
@@ -27,7 +34,8 @@ export {
     UseClass, 
     User,
     FormElement,
-    PermissionChange
+    PermissionChange,
+    SortParam,
 }
 
 
