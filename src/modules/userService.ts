@@ -1,59 +1,76 @@
-import { UseClass, User, PermissionChange, SortParam} from "src/models/types"
+import { UseClass, User, PermissionChange, SortParam, FetchObject} from "src/models/types"
 
 export class UserService implements UseClass {
+
+    getRequest<T>(url: string): Promise<T>{
+        return fetch(url)
+        .then(res => res.json())
+        .catch((error) => {
+            console.error(error);
+        })
+    }
+
+    postRequest<T>(url: string, obj: FetchObject): Promise<T>{
+        return fetch(url, obj)
+            .then(res => res.json())
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
     getUsers(): Promise<User[]> {
-        return fetch('http://localhost:1808/users').then(res => res.json())
+        return this.getRequest('http://localhost:1808/users')
     }
 
     addUser(user: User): Promise<User>{
-        return fetch('http://localhost:1808/users', {
+        return this.postRequest('http://localhost:1808/users', {
             method: "POST",
             headers: {
-                'Content-type' : 'application/json'
+                "Content-Type" : "application/json"
             },
             body: JSON.stringify(user)
-        }).then(res => res.json())
+    })
     }
 
     removeUser(id: string): Promise<User>{
-        return fetch(`http://localhost:1808/users/${id}`, {
+        return this.postRequest(`http://localhost:1808/users/${id}`, {
             method: 'DELETE'
-        }).then(res => res.json())
+        })
     }
 
     changUser(id: string, data: PermissionChange): Promise<User>{
-        return fetch(`http://localhost:1808/users/${id}`, {
+        return this.postRequest(`http://localhost:1808/users/${id}`, {
             method: 'PATCH',
             headers: {
-                'Content-type' : 'application/json'
+                'Content-Type' : 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(res => res.json())
+        })
     }
 
     getUser(id: string): Promise<User>{
-        return fetch(`http://localhost:1808/users/${id}`).then(res => res.json())
+        return this.getRequest(`http://localhost:1808/users/${id}`)
     }
 
     editUser(id: string, user: User): Promise<User>{
-        return fetch(`http://localhost:1808/users/${id}`, {
+        return this.postRequest(`http://localhost:1808/users/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-type' : 'application/json'
+                'Content-Type' : 'application/json'
             },
             body: JSON.stringify(user)
-        }).then(res => res.json())
+        })
     }
     
     filterUser(option: string): Promise<User[]>{
-        return fetch(`http://localhost:1808/users?${option}=true`).then(res => res.json())
+        return this.getRequest(`http://localhost:1808/users?${option}=true`)
     }
 
     sortUsers(sortOption: SortParam): Promise<User[]>{
-        return fetch(`http://localhost:1808/users?_sort=${sortOption.name}&_order=${sortOption.value}`).then(res => res.json())
+        return this.getRequest(`http://localhost:1808/users?_sort=${sortOption.name}&_order=${sortOption.value}`)
     }
 
     searchUser(srt: string): Promise<User[]>{
-        return fetch(`http://localhost:1808/users?name_like=${srt}`).then(res => res.json())
+        return this.getRequest(`http://localhost:1808/users?name_like=${srt}`)
     }
 }

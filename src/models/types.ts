@@ -8,6 +8,8 @@ interface User {
 }
 
 interface UseClass {
+    postRequest(url: string, obj: FetchObject): Promise<User | User[]>
+    getRequest(url: string): Promise<User | User[]>
     getUsers(): Promise<User[]>
     addUser(user: User): Promise<User>
     removeUser(id: string): Promise<User>
@@ -17,6 +19,14 @@ interface UseClass {
     filterUser(option: string): Promise<User[]>
     sortUsers(sortOption: SortParam): Promise<User[]>
     searchUser(str: string): Promise<User[]>
+}
+
+interface FetchObject {
+    method?: string
+    headers?: {
+        "Content-Type": string;
+    }
+    body?: string
 }
 
 interface SortParam {
@@ -36,6 +46,7 @@ export {
     FormElement,
     PermissionChange,
     SortParam,
+    FetchObject
 }
 
 
