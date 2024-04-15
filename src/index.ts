@@ -8,6 +8,7 @@ import { editUsers } from "./modules/editUsers";
 import { filterUser } from "./modules/filterUser";
 import { sortUser } from "./modules/sortUser";
 import { searchUsers } from "./modules/searchUsers";
+import { errorRequest } from "./modules/errorRequest";
 
 declare global {
     interface Window {
@@ -28,3 +29,4 @@ editUsers()
 filterUser()
 sortUser()
 searchUsers()
+errorRequest('')

@@ -1,46 +1,46 @@
 {
   "users": [
     {
-      "name": "Дмитрий",
-      "email": "lesha.rudiko@gmail.com",
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com",
       "children": true,
+      "permission": true
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@example.com",
+      "children": false,
+      "permission": true
+    },
+    {
+      "id": 3,
+      "name": "Charlie",
+      "email": "charlie@example.com",
+      "children": true,
+      "permission": true
+    },
+    {
+      "name": "Davidа",
+      "email": "david@example.com",
+      "children": false,
       "permission": false,
-      "id": "b501"
+      "id": 4
     },
     {
-      "id": "b503",
-      "name": "Дмитрий",
-      "email": "lesha.rudiko@gmail.com",
-      "children": false,
+      "id": 5,
+      "name": "Eva",
+      "email": "eva@example.com",
+      "children": true,
       "permission": true
     },
     {
       "name": "Иван",
       "email": "ivan@mail.ru",
       "children": false,
-      "permission": true,
-      "id": "b505"
-    },
-    {
-      "id": "85fe",
-      "name": "Иван",
-      "email": "ivan@mail.ru",
-      "children": true,
-      "permission": true
-    },
-    {
-      "id": "3b03",
-      "name": "Дмитрий",
-      "email": "matveiPompey@gmail.com",
-      "children": true,
-      "permission": false
-    },
-    {
-      "id": "bdba",
-      "name": "Петя Иванов",
-      "email": "matveiPompey@gmail.com",
-      "children": true,
-      "permission": false
+      "permission": false,
+      "id": 6
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { UseClass, User, PermissionChange, SortParam, FetchObject} from "src/models/types"
+import { errorRequest } from "./errorRequest";
 
 export class UserService implements UseClass {
 
@@ -6,7 +7,7 @@ export class UserService implements UseClass {
         return fetch(url)
         .then(res => res.json())
         .catch((error) => {
-            console.error(error);
+            errorRequest(error)
         })
     }
 
@@ -14,7 +15,7 @@ export class UserService implements UseClass {
         return fetch(url, obj)
             .then(res => res.json())
             .catch(error => {
-                console.error(error);
+               errorRequest(error)
             })
     }
 
