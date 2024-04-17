@@ -1,4 +1,4 @@
-import { User } from "src/models/types";
+import { User } from "src/models/User";
 
 export const renderUser = (users: User[]) => {
     const tBody = document.querySelector('#table-body')

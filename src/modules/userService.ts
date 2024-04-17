@@ -1,4 +1,8 @@
-import { UseClass, User, PermissionChange, SortParam, FetchObject} from "src/models/types"
+import { User } from "src/models/User";
+import { UseClass } from "src/models/useClase";
+import { PermissionChange } from "src/models/permissionChange";
+import { SortParam } from "src/models/sortParam";
+import { FetchObject } from "src/models/fetchObject";
 import { errorRequest } from "./errorRequest";
 
 export class UserService implements UseClass {

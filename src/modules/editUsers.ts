@@ -1,12 +1,12 @@
 import { renderUser } from "./render"
-import { User, FormElement } from "src/models/types"
+import { User} from "src/models/User"
 
 export const editUsers = () => {
     const tBody = document.querySelector('#table-body')
-    const form: FormElement = document.querySelector('form')
-    const nameInput: FormElement = form?.querySelector('#form-name')
-    const emailInput: FormElement = form?.querySelector('#form-email')
-    const childrenInput: FormElement = form?.querySelector('#form-children')
+    const form: HTMLFormElement | null = document.querySelector('form')
+    const nameInput: HTMLFormElement | null = form!.querySelector('#form-name')
+    const emailInput: HTMLFormElement | null = form!.querySelector('#form-email')
+    const childrenInput: HTMLFormElement | null = form!.querySelector('#form-children')
 
     tBody?.addEventListener('click', (e: Event) => {
        if((e.target as HTMLElement).closest('.btn-warning')){

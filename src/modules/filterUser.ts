@@ -1,5 +1,5 @@
 import { renderUser } from "./render"
-import { User } from "src/models/types"
+import { User } from "src/models/User"
 
 export const filterUser = () => {
     const btnIsChildren = document.querySelector('#btn-isChildren')

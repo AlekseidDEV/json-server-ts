@@ -1,11 +1,12 @@
-import { FormElement, User } from "src/models/types"
+
+import { User } from "src/models/User"
 import { renderUser } from "./render"
 
 export const addUser = () => {
-    const form: FormElement = document.querySelector('form')
-    const nameInput: FormElement = form?.querySelector('#form-name')
-    const emailInput: FormElement = form?.querySelector('#form-email')
-    const childrenInput: FormElement = form?.querySelector('#form-children')
+    const form: HTMLFormElement | null = document.querySelector('form')
+    const nameInput: HTMLFormElement | null = form!.querySelector('#form-name')
+    const emailInput: HTMLFormElement | null = form!.querySelector('#form-email')
+    const childrenInput: HTMLFormElement | null = form!.querySelector('#form-children')
 
 
     form?.addEventListener('submit', (e) => {

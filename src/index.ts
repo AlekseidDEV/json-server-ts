@@ -1,6 +1,5 @@
 import { renderUser } from "./modules/render";
 import { UserService } from "./modules/userService";
-import { User } from  './models/types'
 import { addUser } from "./modules/addUser";
 import { removeUsers } from "./modules/removeUsers";
 import { changePermisson } from "./modules/changePermission";
@@ -9,6 +8,8 @@ import { filterUser } from "./modules/filterUser";
 import { sortUser } from "./modules/sortUser";
 import { searchUsers } from "./modules/searchUsers";
 import { errorRequest } from "./modules/errorRequest";
+import { User } from "./models/User";
+
 
 declare global {
     interface Window {

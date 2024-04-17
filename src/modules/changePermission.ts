@@ -1,4 +1,4 @@
-import { User } from "src/models/types"
+import { User } from "src/models/User"
 import { renderUser } from "./render"
 
 export const changePermisson = () => {
