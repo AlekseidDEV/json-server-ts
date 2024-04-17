@@ -10,7 +10,6 @@ import { searchUsers } from "./modules/searchUsers";
 import { errorRequest } from "./modules/errorRequest";
 import { User } from "./models/User";
 
-
 declare global {
     interface Window {
         userService: UserService
